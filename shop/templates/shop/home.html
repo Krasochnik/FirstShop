@@ -1,29 +1,22 @@
- <!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Page Title</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-</style>
-</head>
-<body>
+{% extends "shop/base.html" %}
+{% load static %}
 
-<h1>My Website</h1>
-<p><a href="profile"> website created by me.</a></p>
+{% block css %}
+	
+{% endblock  %}
 
-</body>
-</html>
+{% block content %}	
+					<div class="auto-container">
+						<h2> Welcome to "MushroomShop"! </h2>
 
-<!--{% for i in product %}-->
-<!--{{i.name}}<br>-->
-<!--{{i.description}}<br>-->
-<!--{{i.price}}<br>-->
-<!--{{i.publish_date}}<br>-->
+								Discover the world of aromatic and delicious mushrooms with us! We are delighted to welcome you to our online store, where you will find the freshest and highest quality selection of mushrooms. Whether you're looking for button mushrooms, chanterelles, porcini, or exotic varieties, we have everything to satisfy your culinary imagination.
 
-<!--{% endfor %}-->
+								Enjoy the superb variety and utmost quality of our products. Trust in the expertise of "Mushroom Paradise" and immerse yourself in a world of flavors and aromas with us.
 
+								Best regards,
+								The "MushroomShop" Team
 
+					</div>
+{% endblock%}
+					
+	

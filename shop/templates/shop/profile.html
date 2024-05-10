@@ -58,16 +58,17 @@ button:hover, a:hover {
   </div>
   <p><button>Контакты</button></p>
     {% if user.is_authenticated %}
-<!--    <form method="post" action="{% url 'logout' %}">-->
-<!--    {% csrf_token %}-->
-<!--    <p><button type="submit" >logout</button></p>-->
-  <a href="{% url 'logout' %}?next=/logout"> Logout</a>
+    <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <p><button type="submit" >logout</button></p>
+<!--  <a href="{% url 'logout' %}"> Logout</a>-->
 
     </form>
     {% endif %}
-      <form action="{% url 'home' %}">
-     <button>Переход по ссылке</button>
-      </form>
+      <a href="{% url 'home' %}">
+        <button>Переход по ссылке</button>
+      </a>
+
 </div>
 
 </body>
