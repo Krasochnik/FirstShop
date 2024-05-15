@@ -7,7 +7,7 @@ app_name = 'shop'
 
 urlpatterns = [
     path('', home, name='home'),
-    path('about', home, name='about'),
+    path('about', about, name='about'),
     path('profile', profile_view, name='profile'),
     path('login', login_user, name='login'),
 
