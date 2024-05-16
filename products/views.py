@@ -1,11 +1,14 @@
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from products.models import Product
 
 
 # Create your views here.
 def products(request):
-    return render(request, "products/products.html" )
+    products_list=Product.objects.all()
+    context={"products": products_list}
+    return render(request, "products/products.html", context )
 
 def product_detail(request):
     return render(request, "products/product_detail.html")

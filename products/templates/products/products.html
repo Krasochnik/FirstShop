@@ -6,10 +6,42 @@
 {% endblock  %}
 
 {% block content %}	
-					<div class="auto-container">
-						<h2> Product list </h2>
+						{% for i in products %}
 
-								product1
-                                product2
+						<div class="shop-item col-lg-4 col-md-4 col-sm-12">
+							<div class="inner-box">
+								<div class="image">
+									<a href="shop-detail.html"><img src="images/resource/products/1.png" alt="" /></a>
+									<div class="options-box">
+										<ul class="option-list">
+											<li><a class="flaticon-resize" href="shop-detail.html"></a></li>
+											<li><a class="flaticon-heart" href="shop-detail.html"></a></li>
+											<li><a class="flaticon-shopping-cart-2" href="shop-detail.html"></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="lower-content">
+									<div class="rating">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="light fa fa-star"></span>
+									</div>
+									<h6><a href="shop-detail.html">{{i.name}}<br> particles</a></h6>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="price"><span>{{i.price}}</span> {{i.price}}</div>
+										<!-- Quantity Box -->
+										<div class="quantity-box">
+											<div class="item-quantity">
+												<input class="qty-spinner" type="text" value="1" name="quantity">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
+					{% endfor %}
+
 {% endblock%}

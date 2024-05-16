@@ -74,9 +74,9 @@
 										</ul>
 									</li>
 									<li><a href="{% url "shop:about" %}">About</a></li>
-									<li class="dropdown"><a href="#">Shop</a>
+									<li class="dropdown"><a href="{% url "products:products" %}">Shop</a>
 										<ul>
-											<li><a href="shop.html">Our Products</a></li>
+											<li><a href="{% url "products:products" %}">Our Products</a></li>
 											<li><a href="shop-detail.html">Product Single</a></li>
 											<li><a href="cart.html">Shoping Cart</a></li>
 											<li><a href="checkout.html">CheckOut</a></li>
@@ -205,6 +205,9 @@
 					<!-- Filter Box -->
 					{% block content %}	
 					
+
+
+
 					{% endblock%}
 					
 				</div>
