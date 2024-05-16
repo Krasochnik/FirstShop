@@ -6,6 +6,10 @@
 {% endblock  %}
 
 {% block content %}	
+
+<div class="shops-outer">
+	<div class="auto-container">
+	<div class="row clearfix">
 						{% for i in products %}
 
 						<div class="shop-item col-lg-4 col-md-4 col-sm-12">
@@ -28,9 +32,9 @@
 										<span class="fa fa-star"></span>
 										<span class="light fa fa-star"></span>
 									</div>
-									<h6><a href="shop-detail.html">{{i.name}}<br> particles</a></h6>
+									<h6><a href="shop-detail.html">{{i.name}}</a></h6>
 									<div class="d-flex justify-content-between align-items-center">
-										<div class="price"><span>{{i.price}}</span> {{i.price}}</div>
+										<div class="price"><span>{{i.price}}</span>{{i.price}}</div>
 										<!-- Quantity Box -->
 										<div class="quantity-box">
 											<div class="item-quantity">
@@ -41,7 +45,10 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					
 					{% endfor %}
+				</div>
+			</div>
+	</div>
 
 {% endblock%}

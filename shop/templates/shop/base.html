@@ -83,13 +83,13 @@
 											<li><a href="register.html">Register</a></li>
 										</ul>
 									</li>
-									<li class="dropdown"><a href="#">Blog</a>
+								<!--	<li class="dropdown"><a href="#">Blog</a>
 										<ul>
 											<li><a href="blog.html">Our Blog</a></li>
 											<li><a href="blog-detail.html">Blog Single</a></li>
 											<li><a href="not-found.html">Not Found</a></li>
 										</ul>
-									</li>
+									</li>-->
 									<li><a href="{% url "shop:about" %}">Contact us</a></li>
 								</ul>
 							</div>
@@ -226,7 +226,9 @@
 								<!-- Category List -->
 								<ul class="category-list">
                                     {% for i in category %}
-                                        <li><a href="#">{{i.name}} <span>(8)</span></a></li>
+									<li><a href="{% url "products:products" %}">{{i.text}} </a></li>
+									{% endfor %}
+                                      <!--  <li><a href="#">{{i.name}} <span>(8)</span></a></li>
                                         <li><a href="#">Air Filter <span>(5)</span></a></li>
                                         <li><a href="#">Body Engine <span>(5)</span></a></li>
                                         <li><a href="#">Brake Parts names <span>(7)</span></a></li>
@@ -235,8 +237,8 @@
                                         <li><a href="#">Covid-19 <span>(2)</span></a></li>
                                         <li><a href="#">Electornics <span>(8)</span></a></li>
                                         <li><a href="#">Frame Sunglasses <span>(10)</span></a></li>
-                                        <li><a href="#">Furniture <span>(7)</span></a></li>
-                                    {% endfor %}
+                                        <li><a href="#">Furniture <span>(7)</span></a></li> -->
+                                   
 								</ul>
 								
 							</div>
