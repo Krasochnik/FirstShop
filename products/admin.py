@@ -8,7 +8,7 @@ admin.site.register(Feedback)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields={'slug':("name",)}
+    prepopulated_fields={'slug':("text",)}
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
