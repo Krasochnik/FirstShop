@@ -1,4 +1,5 @@
 {% load static %}
+{% load products_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -225,8 +226,9 @@
 								</div>
 								<!-- Category List -->
 								<ul class="category-list">
-                                    {% for i in category %}
-									<li><a href="{% url "products:products" %}">{{i.text}} </a></li>
+									{% tag_categories as categories %}
+                                    {% for category in categories %}
+									<li><a href="{% url "products:products" %}">{{category.text}} </a></li>
 									{% endfor %}
                                       <!--  <li><a href="#">{{i.name}} <span>(8)</span></a></li>
                                         <li><a href="#">Air Filter <span>(5)</span></a></li>
