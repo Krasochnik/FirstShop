@@ -6,6 +6,6 @@ from django.contrib.auth.views import LoginView
 app_name = 'products'
 
 urlpatterns = [
-    path('', products, name='products'),
-    path('detail', product_detail, name='product_detail'),
+    path('<slug:category_slug>/', products, name='products'),
+    path('detail/<slug:product_slug>', product_detail, name='product_detail'),
 ]

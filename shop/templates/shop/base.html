@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Mushroom Shop</title>
+<title>{{title}}</title>
 <!-- Stylesheets -->
 <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
 <link href="{% static 'css/style.css'%}" rel="stylesheet">
@@ -62,23 +62,18 @@
 								<ul class="navigation clearfix">
 									<li class="dropdown"><a href="{% url "shop:home" %}">Home</a>
 										<ul>
-											<li><a href="index.html">Homepage One</a></li>
+											<li><a href="{% url "shop:home" %}">Homepage</a></li>
 											<li><a href="{% url "admin:index" %}">Admin panel</a></li>
-											<li><a href="index-3.html">Homepage Three</a></li>
-											<li class="dropdown"><a href="#">Header Styles</a>
-												<ul>
-													<li><a href="index.html">Header Style One</a></li>
-													<li><a href="index-2.html">Header Style Two</a></li>
-													<li><a href="index-3.html">Header Style Three</a></li>
-												</ul>
-											</li>
+						
+							
 										</ul>
 									</li>
 									<li><a href="{% url "shop:about" %}">About</a></li>
-									<li class="dropdown"><a href="{% url "products:products" %}">Shop</a>
+									<li class="dropdown"><a href="#">Shop</a>
 										<ul>
-											<li><a href="{% url "products:products" %}">Our Products</a></li>
-											<li><a href="shop-detail.html">Product Single</a></li>
+											<li><a href="{% url "products:products" "all" %}">Our Products</a></li>
+											{% tag_product as product_slug %}
+											<li><a href="{% url "products:product_detail" product_slug.slug %}">Product Single</a></li>
 											<li><a href="cart.html">Shoping Cart</a></li>
 											<li><a href="checkout.html">CheckOut</a></li>
 											<li><a href="register.html">Register</a></li>
@@ -228,7 +223,7 @@
 								<ul class="category-list">
 									{% tag_categories as categories %}
                                     {% for category in categories %}
-									<li><a href="{% url "products:products" %}">{{category.text}} </a></li>
+									<li><a href="{% url "products:products" category.slug%}">{{category.text}} </a></li>
 									{% endfor %}
                                       <!--  <li><a href="#">{{i.name}} <span>(8)</span></a></li>
                                         <li><a href="#">Air Filter <span>(5)</span></a></li>

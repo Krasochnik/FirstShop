@@ -33,6 +33,9 @@ class Product(models.Model):
         verbose_name="Товар"
         verbose_name_plural="Товары"
 
+    def sale_price(self):
+        return round(self.price-self.price*self.discount/100, 2)
+
     def __str__(self):
         return f'{self.name}'
 

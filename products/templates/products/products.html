@@ -1,5 +1,6 @@
 {% extends "shop/base.html" %}
 {% load static %}
+{% load products_tags %}
 
 {% block css %}
 	
@@ -15,7 +16,8 @@
 						<div class="shop-item col-lg-4 col-md-4 col-sm-12">
 							<div class="inner-box">
 								<div class="image">
-									<a href="shop-detail.html"><img src="images/resource/products/1.png" alt="" /></a>
+									<a href="{% url "products:product_detail" i.slug %}"><img  src={% if not i.image %} {% static 'images/No picture.jpg'%} 
+										{% else %} {{i.image}} {% endif %}alt="" /></a>
 									<div class="options-box">
 										<ul class="option-list">
 											<li><a class="flaticon-resize" href="shop-detail.html"></a></li>
@@ -34,13 +36,26 @@
 									</div>
 									<h6><a href="shop-detail.html">{{i.name}}</a></h6>
 									<div class="d-flex justify-content-between align-items-center">
-										<div class="price"><span>{{i.price}}</span>{{i.price}}</div>
+										<div class="price">
+											{% if i.discount != 0 %}
+											<span>{{i.price}}</span>
+											{% endif %}
+
+											{{i.sale_price}}</div>
 										<!-- Quantity Box -->
 										<div class="quantity-box">
 											<div class="item-quantity">
 												<input class="qty-spinner" type="text" value="1" name="quantity">
 											</div>
+											<div class="button-box">
+												<a href="shop.html" class="theme-btn btn-style-one">
+													Add to cart
+												</a>
+											</div>
 										</div>
+
+										
+
 									</div>
 								</div>
 							</div>
@@ -50,5 +65,25 @@
 				</div>
 			</div>
 	</div>
+	<!-- Styled Pagination -->
+	{% if products %}
+	<ul class="styled-pagination text-center">
+		<li class="next"{% if not products.previous %}disabled{% endif %}>
+			<a href="{% if products.has_previous %}?{% change_params page=products.previous_page_number %}{% else %}#{% endif %}">
+				<span class="fa fa-angle-double-left"></span></a></li>
+		{% for page in products.paginator.page_range %}
+        {% if page >= products.number|add:-2 and page <= products.number|add:2 %}   
+				
+		<li><a href="?{% change_params page=page %}" {% if products.number == page %} class="active" {% endif %}>{{page}}</a></li>
+
+		{% endif %}
+		{% endfor %}
+
+		<li class="next" {% if not products.has_next %}disabled{% endif %}>
+			<a href="{% if products.has_next %}?{% change_params page=products.next_page_number %}{% else %}#{% endif %}">
+				<span class="fa fa-angle-double-right"></span></a></li>
+	</ul>
+	{% endif %}
+	<!-- End Styled Pagination -->
 
 {% endblock%}

@@ -6,13 +6,11 @@ from products.models import Category
 
 # Create your views here.
 def home(request):
-    category=Category.objects.all()
-    context={"category":category }
+    context={"title":"Home page" }
     return render(request, "shop/home.html", context)
 
 def about(request):
-    category=Category.objects.all()
-    context={"category":category }
+    context={"title":"about" }
     return render(request, "shop/about.html",context)
 
 def login_user(request):

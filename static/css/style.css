@@ -6042,7 +6042,7 @@
 
 .shop-detail-section{
 	position:relative;
-	padding:120px 0px 0px;
+	padding:10px 0px 0px;
 }
 
 .shop-detail-section .upper-box{
@@ -6275,6 +6275,7 @@
 	font-weight:400;
 	font-size:var(--font-15);
 	margin-top:var(--margin-top-15);
+	margin-bottom: 25px;
 	color:rgba(var(--color-fourtyfive-rgb), 0.80);
 }
 

@@ -1,1 +1,18 @@
-[{"model": "products.category", "pk": 1, "fields": {"text": "Съедобные", "slug": null}}, {"model": "products.category", "pk": 2, "fields": {"text": "Не съедобные", "slug": null}}]
+[
+    {
+        "model": "products.category",
+        "pk": 1,
+        "fields": {
+            "text": "РЎСЉРµРґРѕР±РЅС‹Рµ",
+            "slug": null
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 2,
+        "fields": {
+            "text": "РЅРµ РЎСЉРµРґРѕР±РЅС‹Рµ",
+            "slug": null
+        }
+    }
+]

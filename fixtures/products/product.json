@@ -1,1 +1,92 @@
-[{"model": "products.product", "pk": 1, "fields": {"category": 1, "name": "Волнушка", "description": "cool desk", "price": "11.00", "publish_date": "2024-05-16T05:15:44.406Z", "slug": null, "image": "", "discount": "0.00", "quantity": 0}}, {"model": "products.product", "pk": 2, "fields": {"category": 2, "name": "Мухомор", "description": "cool desk 2", "price": "7.00", "publish_date": "2024-05-16T05:16:04.689Z", "slug": null, "image": "", "discount": "0.00", "quantity": 0}}, {"model": "products.product", "pk": 3, "fields": {"category": 1, "name": "Маслята", "description": "Оч вкусные для жарки", "price": "3.00", "publish_date": "2024-05-16T07:58:24.895Z", "slug": null, "image": "", "discount": "0.00", "quantity": 0}}, {"model": "products.product", "pk": 4, "fields": {"category": 1, "name": "Сыроежка", "description": "нет описания", "price": "2.00", "publish_date": "2024-05-16T08:01:19.629Z", "slug": null, "image": "", "discount": "0.00", "quantity": 0}}, {"model": "products.product", "pk": 5, "fields": {"category": 1, "name": "Волочай", "description": "с картинки", "price": "15.00", "publish_date": "2024-05-16T08:01:36.294Z", "slug": null, "image": "", "discount": "0.00", "quantity": 0}}, {"model": "products.product", "pk": 6, "fields": {"category": 1, "name": "Валуй", "description": "0_0", "price": "25.00", "publish_date": "2024-05-16T08:02:14.482Z", "slug": null, "image": "", "discount": "0.00", "quantity": 0}}]
+[
+    {
+        "model": "products.product",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "name": "Р’Р°Р»СѓР№",
+            "description": "cool desk",
+            "price": "11.00",
+            "publish_date": "2024-05-16T05:15:44.406Z",
+            "slug": null,
+            "image": "",
+            "discount": "0.00",
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 2,
+        "fields": {
+            "category": 2,
+            "name": "РњСѓС…РѕРјРѕСЂ",
+            "description": "cool desk 2",
+            "price": "7.00",
+            "publish_date": "2024-05-16T05:16:04.689Z",
+            "slug": null,
+            "image": "",
+            "discount": "0.00",
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 3,
+        "fields": {
+            "category": 1,
+            "name": "РњРѕР»РѕС‡Р°Р№",
+            "description": "РџРµСЂРІС‹Р№ СЂР°Р· СЃР»С‹С€Сѓ, РЅРѕ РѕС‡РµРЅСЊ РІРєСѓСЃРЅРѕ",
+            "price": "3.00",
+            "publish_date": "2024-05-16T07:58:24.895Z",
+            "slug": null,
+            "image": "",
+            "discount": "0.00",
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 4,
+        "fields": {
+            "category": 1,
+            "name": "РњР°СЃР»СЏС‚Р°",
+            "description": "РўРѕРї РґР»СЏ Р¶Р°СЂРєРё",
+            "price": "2.00",
+            "publish_date": "2024-05-16T08:01:19.629Z",
+            "slug": null,
+            "image": "",
+            "discount": "0.00",
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 5,
+        "fields": {
+            "category": 1,
+            "name": "Р‘РµР»С‹Р№ РіСЂРёР±",
+            "description": "РЎР°РјС‹Р№ РІРєСѓСЃРЅС‹Р№",
+            "price": "15.00",
+            "publish_date": "2024-05-16T08:01:36.294Z",
+            "slug": null,
+            "image": "",
+            "discount": "0.00",
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 6,
+        "fields": {
+            "category": 1,
+            "name": "РЎС‹СЂРѕРµР¶РєР° СЂРµРґРєР°СЏ",
+            "description": "0_0",
+            "price": "25.00",
+            "publish_date": "2024-05-16T08:02:14.482Z",
+            "slug": null,
+            "image": "",
+            "discount": "0.00",
+            "quantity": 0
+        }
+    }
+]
