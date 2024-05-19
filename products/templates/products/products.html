@@ -11,6 +11,32 @@
 <div class="shops-outer">
 	<div class="auto-container">
 	<div class="row clearfix">
+		<!-- Filter Box -->
+		<div class="filter-box">
+			<div class="d-flex justify-content-between align-items-center flex-wrap">
+				<!-- Left Box -->
+				<div class="left-box d-flex align-items-center">
+					<div class="results">Showing {{products.start_index}}-{{products.end_index}} of {{products.paginator.count}} results</div>
+				</div>
+				<!-- Right Box -->
+				<div class="right-box d-flex">
+					<div class="form-group">
+						<select name="currency" class="custom-select-box" value="default">
+							<option href="">Recently Added</option>
+							<option>Added 01</option>
+							<option>Added 02</option>
+							<option>Added 03</option>
+							<option>Added 04</option>
+						</select>
+					</div>
+					<ul class="pages-list">
+						<li><a class="flaticon-list" href="#"></a></li>
+						<li><a class="flaticon-menu-2" href="#"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- End Filter Box -->
 						{% for i in products %}
 
 						<div class="shop-item col-lg-4 col-md-4 col-sm-12">
