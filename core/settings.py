@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Shop',
+        'USER': 'PostUser',
+        'PASSWORD': 'PostUser',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -141,3 +145,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # LOGIN_REDIRECT_URL = reverse_lazy('shop:home')
 LOGIN_URL = reverse_lazy('shop:login')
 LOGOUT_REDIRECT_URL = reverse_lazy('shop:home')
+
+#AUTH_USER_MODEL = 'users.User'

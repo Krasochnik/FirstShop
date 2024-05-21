@@ -1,15 +1,14 @@
 from django.contrib import admin
 from django.urls import path
-from shop.views import home, profile_view, login_user, about
-from django.contrib.auth.views import LoginView
+from shop.views import home, about
 
 app_name = 'shop'
 
 urlpatterns = [
     path('', home, name='home'),
     path('about', about, name='about'),
-    path('profile', profile_view, name='profile'),
-    path('login', login_user, name='login'),
+
+
 
 
 

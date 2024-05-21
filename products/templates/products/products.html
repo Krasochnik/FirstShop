@@ -19,21 +19,35 @@
 					<div class="results">Showing {{products.start_index}}-{{products.end_index}} of {{products.paginator.count}} results</div>
 				</div>
 				<!-- Right Box -->
-				<div class="right-box d-flex">
-					<div class="form-group">
-						<select name="currency" class="custom-select-box" value="default">
-							<option href="">Recently Added</option>
-							<option>Added 01</option>
-							<option>Added 02</option>
-							<option>Added 03</option>
-							<option>Added 04</option>
-						</select>
+				<form action="{% url "products:products" slug_url %}" method="get" >
+					<div class="right-box d-flex">
+						<div class="form-check text-white mx-3">
+							<input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on" {% if request.GET.on_sale == 'True' %}checked{% endif %}>
+							{% if request.GET.q %}
+								<input type="hidden" name="q" value="{{ request.GET.q }}">
+							{% endif %}
+							<label class="form-check-label" for="flexCheckDefault">
+								Товары по акции
+							</label>
+						</div>
+						<div class="form-group">
+							<select name="currency" class="custom-select-box" value="default">
+								<option name="order_by" value="publish_date">newer</option>
+								<option name="order_by" value="price">^Price</option>
+								<option name="order_by" value="-price">vPrice</option>
+								<option name="order_by" value="-publish_date">older</option>
+								<option name="order_by">rating</option>
+							</select>
+							
+						</div>
+						
+						<ul class="pages-list">
+							<li><button type="submit" class="btn">go</button></a></li>
+						
+						</ul>
 					</div>
-					<ul class="pages-list">
-						<li><a class="flaticon-list" href="#"></a></li>
-						<li><a class="flaticon-menu-2" href="#"></a></li>
-					</ul>
-				</div>
+				</form>
+
 			</div>
 		</div>
 		<!-- End Filter Box -->
@@ -61,6 +75,7 @@
 										<span class="light fa fa-star"></span>
 									</div>
 									<h6><a href="shop-detail.html">{{i.name}}</a></h6>
+									{{i.publish_date}}
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="price">
 											{% if i.discount != 0 %}

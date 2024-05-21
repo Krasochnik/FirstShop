@@ -225,6 +225,7 @@
                                     {% for category in categories %}
 									<li><a href="{% url "products:products" category.slug%}">{{category.text}} </a></li>
 									{% endfor %}
+									<li><a href="{% url 'products:products' 'all' %}?on_sale=True,currency=publish_date">Скидки</a></li>
                                       <!--  <li><a href="#">{{i.name}} <span>(8)</span></a></li>
                                         <li><a href="#">Air Filter <span>(5)</span></a></li>
                                         <li><a href="#">Body Engine <span>(5)</span></a></li>
