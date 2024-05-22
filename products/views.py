@@ -1,8 +1,7 @@
 from django.core.paginator import Paginator
-from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
-from products.models import Product, Category
+from django.shortcuts import render, get_list_or_404
+from products.models import Product
+from products.utils import q_search
 
 
 # Create your views here.
@@ -11,11 +10,15 @@ def products(request, category_slug=None):
     page = request.GET.get('page', 1)
     currency = request.GET.get('currency', None)
     on_sale = request.GET.get('on_sale', None)
+    query = request.GET.get('q', None)
 
     if category_slug=='all':
         products_list=Product.objects.all()
+    elif query:
+        products_list = q_search(query)
     else:
-        products_list=Product.objects.filter(category__slug=category_slug)
+        products_list= get_list_or_404(Product.objects.filter(category__slug=category_slug))
+       
 
     if on_sale:
         products_list=Product.objects.filter(discount__gt=0)
@@ -39,8 +42,7 @@ def product_detail(request, product_slug=None):
     product=Product.objects.get(slug=product_slug)
     context={
         "products": product,
-        "slug_url": product_slug,
              }
     return render(request, "products/product_detail.html", context)
 
-# Create your views here.
+

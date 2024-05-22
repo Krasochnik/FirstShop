@@ -99,8 +99,12 @@
 					<div class="options-box d-flex align-items-center">
 					
 						<!-- Search Box -->
-						<div class="search-box-outer">
-							<div class="search-box-btn"><span class="flaticon-search-1"></span></div>
+						<div class="search">
+							<!--<div class="search-box-btn"><span class="flaticon-search-1"></span></div> -->
+							<form class="d-flex" role="search" action="{% url "products:search" %}" method="get">
+								<input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+								<button class="btn" type="submit">Поиск</button>
+							</form>
 						</div>
 						
 						<!-- User Box -->
