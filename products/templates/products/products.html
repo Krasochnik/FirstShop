@@ -60,9 +60,9 @@
 										{% else %} {{i.image}} {% endif %}alt="" /></a>
 									<div class="options-box">
 										<ul class="option-list">
-											<li><a class="flaticon-resize" href="shop-detail.html"></a></li>
-											<li><a class="flaticon-heart" href="shop-detail.html"></a></li>
-											<li><a class="flaticon-shopping-cart-2" href="shop-detail.html"></a></li>
+											<li><a class="flaticon-resize" href="{% url "products:product_detail" i.slug %}"></a></li>
+											<li><a class="flaticon-heart" href="{% url "products:product_detail" i.slug %}"></a></li>
+											<li><a class="flaticon-shopping-cart-2" href="{% url "products:product_detail" i.slug %}"></a></li>
 										</ul>
 									</div>
 								</div>
@@ -74,7 +74,7 @@
 										<span class="fa fa-star"></span>
 										<span class="light fa fa-star"></span>
 									</div>
-									<h6><a href="shop-detail.html">{{i.name}}</a></h6>
+									<h6><a href="{% url "products:product_detail" i.slug %}">{{i.name}}</a></h6>
 									{{i.publish_date}}
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="price">

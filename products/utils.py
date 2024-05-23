@@ -1,9 +1,4 @@
-from django.contrib.postgres.search import (
-    SearchVector,
-    SearchQuery,
-    SearchRank,
-    SearchHeadline,
-)
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, SearchHeadline
 
 from products.models import Product
 
@@ -20,7 +15,7 @@ def q_search(query):
         .filter(rank__gt=0)
         .order_by("-rank")
     )
-
+    
     result = result.annotate(
         headline=SearchHeadline(
             "name",

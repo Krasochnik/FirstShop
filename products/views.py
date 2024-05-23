@@ -23,7 +23,7 @@ def products(request, category_slug=None):
     if on_sale:
         products_list=Product.objects.filter(discount__gt=0)
 
-    if currency:
+    if currency and currency != "default":
         products_list=Product.objects.order_by(currency)
 
 
