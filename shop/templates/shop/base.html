@@ -75,8 +75,8 @@
 											{% tag_product as product_slug %}
 											<li><a href="{% url "products:product_detail" product_slug.slug %}">Product Single</a></li>
 											<li><a href="cart.html">Shoping Cart</a></li>
-											<li><a href="checkout.html">CheckOut</a></li>
-											<li><a href="register.html">Register</a></li>
+											<li><a href="{% url "users:login_user" %}">Login</a></li>
+											<li><a href="{% url "users:registration" %}">Register</a></li>
 										</ul>
 									</li>
 								<!--	<li class="dropdown"><a href="#">Blog</a>
@@ -108,7 +108,7 @@
 						</div>
 						
 						<!-- User Box -->
-						<a class="user-box flaticon-user-3" href="contact.html"></a>
+						<a class="user-box flaticon-user-3" href="{% url "users:login_user" %}"></a>
 						
 						<!-- Like Box -->
 						<div class="like-box">
