@@ -6,9 +6,8 @@ from products.utils import q_search
 
 # Create your views here.
 def products(request, category_slug=None):
-   
     page = request.GET.get('page', 1)
-    currency = request.GET.get('currency', None)
+    order_by = request.GET.get('currency', None)
     on_sale = request.GET.get('on_sale', None)
     query = request.GET.get('q', None)
 
@@ -17,14 +16,13 @@ def products(request, category_slug=None):
     elif query:
         products_list = q_search(query)
     else:
-        products_list= get_list_or_404(Product.objects.filter(category__slug=category_slug))
-       
+        products_list = get_list_or_404(Product.objects.filter(category__slug=category_slug))
 
     if on_sale:
-        products_list=Product.objects.filter(discount__gt=0)
+        products_list = products_list.filter(discount__gt=0)
 
-    if currency and currency != "default":
-        products_list=Product.objects.order_by(currency)
+    if order_by and order_by != "default":
+        products_list = products_list.order_by(order_by)
 
 
     paginator = Paginator(products_list, 3)
@@ -44,5 +42,3 @@ def product_detail(request, product_slug=None):
         "products": product,
              }
     return render(request, "products/product_detail.html", context)
-
-

@@ -19,24 +19,25 @@
 					<div class="results">Showing {{products.start_index}}-{{products.end_index}} of {{products.paginator.count}} results</div>
 				</div>
 				<!-- Right Box -->
-				<form action="{% url "products:products" slug_url %}" method="get" >
+				<form action="{% if request.GET.q %}{% url "products:search" %}{% else %}{% url "products:products" slug_url %}{% endif %}" method="get" >
 					<div class="right-box d-flex">
-						<div class="form-check mx-3" align="center">
-							<input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on" {% if request.GET.on_sale == 'True' %}checked{% endif %} align="center">
+						<div class="form-check mx-3">
+							<input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on" {% if request.GET.on_sale == 'on' %}checked{% endif %}>
 							{% if request.GET.q %}
 								<input type="hidden" name="q" value="{{ request.GET.q }}">
 							{% endif %}
-							<label class="form-check-label" for="flexCheckDefault" align="center">
+							<label class="form-check-label" for="flexCheckDefault">
 								Товары по акции
 							</label>
 						</div>
 						<div class="form-group">
+							
 							<select name="currency" class="custom-select-box" value="default">
-								<option name="order_by" value="publish_date">newer</option>
-								<option name="order_by" value="price">^Price</option>
-								<option name="order_by" value="-price">vPrice</option>
-								<option name="order_by" value="-publish_date">older</option>
-								<option name="order_by">rating</option>
+								<option  {% if request.GET.currency == '-publish_date' %} selected {% endif %}value="-publish_date">Новые</option>
+								<option  {% if request.GET.currency == 'price' %} selected {% endif %}value="price">Дешевые</option>
+								<option  {% if request.GET.currency == '-price' %} selected {% endif %}value="-price">Дорогие</option>
+								<option  {% if request.GET.currency == 'publish_date' %} selected {% endif %} value="publish_date">Старые</option>
+								<option >rating</option>
 							</select>
 							
 						</div>

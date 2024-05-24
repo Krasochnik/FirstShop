@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
-from django.conf.global_settings import STATICFILES_DIRS
 from django.urls import reverse_lazy
 
 

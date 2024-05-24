@@ -15,7 +15,7 @@ def q_search(query):
         .filter(rank__gt=0)
         .order_by("-rank")
     )
-    
+
     result = result.annotate(
         headline=SearchHeadline(
             "name",
