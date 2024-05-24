@@ -50,7 +50,7 @@ class Feedback(models.Model):
         auto_now_add=True, verbose_name='publish_date'
     )
     author = models.ForeignKey(
-        'auth.User', on_delete=models.CASCADE
+        'users.User', on_delete=models.CASCADE
     )
     rating = models.IntegerField(
         default=1, verbose_name='rating'

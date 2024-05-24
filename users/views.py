@@ -8,7 +8,7 @@ def login_user(request):
 
 
 def registration(request):
-    return render(request, "users/login_user.html")
+    return render(request, "users/registration.html")
 
 @login_required
 def profile_view(request):
