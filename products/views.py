@@ -12,16 +12,18 @@ def products(request, category_slug=None):
     query = request.GET.get('q', None)
 
     if category_slug=='all':
-        products_list=Product.objects.all()
+        products_list = Product.objects.all()
     elif query:
         products_list = q_search(query)
     else:
-        products_list = get_list_or_404(Product.objects.filter(category__slug=category_slug))
+        products_list = get_list_or_404(Product,category__slug=category_slug)
 
     if on_sale:
+        products_list = Product.objects.filter(id__in=[product.id for product in products_list])
         products_list = products_list.filter(discount__gt=0)
 
     if order_by and order_by != "default":
+        products_list = Product.objects.filter(id__in=[product.id for product in products_list])
         products_list = products_list.order_by(order_by)
 
 

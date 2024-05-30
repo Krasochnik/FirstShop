@@ -1,0 +1,26 @@
+[
+    {
+        "model": "products.category",
+        "pk": 1,
+        "fields": {
+            "text": "Съедобные",
+            "slug": "sedobnye"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 2,
+        "fields": {
+            "text": "не Съедобные",
+            "slug": "ne-sedobnye"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 3,
+        "fields": {
+            "text": "Все грибы",
+            "slug": "all"
+        }
+    }
+]
