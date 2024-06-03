@@ -135,7 +135,7 @@ STATICFILES_DIRS= [
 
 MEDIA_URL = 'media/'
 
-MEDIA_ROOT = [BASE_DIR / 'media/']
+MEDIA_ROOT = [BASE_DIR / 'media']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -144,8 +144,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # LOGIN_REDIRECT_URL = reverse_lazy('shop:home')
 LOGIN_URL = reverse_lazy('users:login_user')
-LOGOUT_REDIRECT_URL = reverse_lazy('users:logout')
+LOGOUT_REDIRECT_URL = reverse_lazy('users:logout_user')
 
-LOGIN_URL = '/user/login/'
+# LOGIN_URL = '/user/login/'
 
 AUTH_USER_MODEL = 'users.User'

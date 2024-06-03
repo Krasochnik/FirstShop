@@ -1,10 +1,13 @@
+import os
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.contrib import auth, messages
 from django.urls import reverse
 
+from core.settings import BASE_DIR
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
+from users.models import User
 
 
 # Create your views here.
@@ -64,15 +67,37 @@ def registration(request):
     }
     return render(request, "users/registration.html", context)
 
+def handle_uploaded_file(f,u):
+    with open(f"media/user_images/{u}.jpg", "wb+") as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
 @login_required
 def profile_view(request):
     if request.method == 'POST':
-        form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
+        form = ProfileForm(data=request.POST, files=request.FILES, instance=request.user )
+         
         if form.is_valid():
+            # breakpoint()
+            handle_uploaded_file(request.FILES["image"], request.user)
+            # Create, but don't save the new author instance.
+            new_form = form.save(commit=False)
 
-            form.save()
+            # Modify the author in some way.
+            new_form.image = f""
+
+            # Save the new instance.
+            new_form.save()
+
+            # Now, save the many-to-many data for the form.
+            form.save_m2m()
+            # form.save()
+            # User.objects.get(username=request.user).update({'image': f"media/user_images{request.user}.jpg"})
+            # User.image.update({'image': f"media/user_images{request.user}.jpg"})
             # messages.success(request, "Профайл успешно обновлен")
             return HttpResponseRedirect(reverse('users:profile'))
+        else:
+            print(form.errors)  # Вывод ошибок формы для отладки
     else:
         form = ProfileForm(instance=request.user)
 
@@ -95,7 +120,7 @@ def users_cart(request):
     return render(request, 'users/users_cart.html')
 
 @login_required
-def user_logout(request):
+def logout_user(request):
     # messages.success(request, f"{request.user.username}, Вы вышли из аккаунта")
     auth.logout(request)
     return render(request, "shop/home.html")
