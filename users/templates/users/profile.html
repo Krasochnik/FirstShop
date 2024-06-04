@@ -9,13 +9,15 @@
 {% block content %}	
 					<div class="auto-container">
 						<h2> PROFILE </h2>
+						<img src="{{ user.image.url }}" alt="User Image">
 						<form action="{% url "users:profile" %}" method="post" enctype="multipart/form-data">
 							{% csrf_token %}
 							<div class="row">
 								<div class="col-md-12 mb-3 text-center">
 									{% if user.image %}
-										<img src="{{user.image}}"
-											alt="Аватар пользователя" class="img-fluid rounded-circle"
+										<img src="{{ user.image.url }}"
+											alt="Аватар пользователя"
+											class="img-fluid rounded-circle"
 											style="max-width: 150px;">
 									{% else %}
 										<img src="{% static "/images/user_foto.png" %}"

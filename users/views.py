@@ -67,10 +67,6 @@ def registration(request):
     }
     return render(request, "users/registration.html", context)
 
-def handle_uploaded_file(f,u):
-    with open(f"media/user_images/{u}.jpg", "wb+") as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)
 
 @login_required
 def profile_view(request):
@@ -79,19 +75,19 @@ def profile_view(request):
          
         if form.is_valid():
             # breakpoint()
-            handle_uploaded_file(request.FILES["image"], request.user)
+            # handle_uploaded_file(request.FILES["image"], request.user)
             # Create, but don't save the new author instance.
-            new_form = form.save(commit=False)
+            # new_form = form.save(commit=False)
 
             # Modify the author in some way.
-            new_form.image = f""
+            # new_form.image = f"static/images/user/{request.user}.jpg"
 
             # Save the new instance.
-            new_form.save()
+            # new_form.save()
 
             # Now, save the many-to-many data for the form.
-            form.save_m2m()
-            # form.save()
+            # form.save_m2m()
+            form.save()
             # User.objects.get(username=request.user).update({'image': f"media/user_images{request.user}.jpg"})
             # User.image.update({'image': f"media/user_images{request.user}.jpg"})
             # messages.success(request, "Профайл успешно обновлен")
