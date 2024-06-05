@@ -29,7 +29,7 @@ def login_user(request):
             #        Cart.objects.filter(session_key=session_key).update(user=user)
 
                 redirect_page = request.POST.get('next', None)
-                if redirect_page and redirect_page != reverse('user:logout'):
+                if redirect_page and redirect_page != reverse('users:logout_user'):
                     return HttpResponseRedirect(request.POST.get('next'))
                     
                 return HttpResponseRedirect(reverse('shop:home'))
@@ -72,24 +72,8 @@ def registration(request):
 def profile_view(request):
     if request.method == 'POST':
         form = ProfileForm(data=request.POST, files=request.FILES, instance=request.user )
-         
         if form.is_valid():
-            # breakpoint()
-            # handle_uploaded_file(request.FILES["image"], request.user)
-            # Create, but don't save the new author instance.
-            # new_form = form.save(commit=False)
-
-            # Modify the author in some way.
-            # new_form.image = f"static/images/user/{request.user}.jpg"
-
-            # Save the new instance.
-            # new_form.save()
-
-            # Now, save the many-to-many data for the form.
-            # form.save_m2m()
             form.save()
-            # User.objects.get(username=request.user).update({'image': f"media/user_images{request.user}.jpg"})
-            # User.image.update({'image': f"media/user_images{request.user}.jpg"})
             # messages.success(request, "Профайл успешно обновлен")
             return HttpResponseRedirect(reverse('users:profile'))
         else:
