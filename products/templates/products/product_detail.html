@@ -15,9 +15,12 @@
 			<div class="row clearfix">
 				<!-- Gallery Column -->
 				<div class="gallery-column col-lg-6 col-md-12 col-sm-12">
-					
-							<!-- Swiper -->
-							<img src="{% static '/images/No picture3.jpg' %}" alt="">
+					{% if products.image %}
+					<img src="{{ products.image.url }}" alt="">
+					{% else %}
+					<!-- Swiper -->
+					<img src="{% static '/images/No picture3.jpg' %}" alt="">
+					{% endif %}
 
 							
 					

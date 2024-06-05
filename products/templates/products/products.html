@@ -58,7 +58,7 @@
 							<div class="inner-box">
 								<div class="image">
 									<a href="{% url "products:product_detail" i.slug %}"><img  src={% if not i.image %} {% static 'images/No picture.jpg'%} 
-										{% else %} {{i.image}} {% endif %}alt="" /></a>
+										{% else %} {{i.image.url}} {% endif %}alt="" /></a>
 									<div class="options-box">
 										<ul class="option-list">
 											<li><a class="flaticon-resize" href="{% url "products:product_detail" i.slug %}"></a></li>
