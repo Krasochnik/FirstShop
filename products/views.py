@@ -27,7 +27,7 @@ def products(request, category_slug=None):
         products_list = products_list.order_by(order_by)
 
 
-    paginator = Paginator(products_list, 3)
+    paginator = Paginator(products_list, 12)
     current_page = paginator.page(int(page))
 
     context={
