@@ -90,7 +90,8 @@
 												<input class="qty-spinner" type="text" value="1" name="quantity">
 											</div>
 											<div class="button-box">
-												<a href="shop.html" class="theme-btn btn-style-one">
+												<a href="{% url "carts:cart_add" %}" class="btn add-to-cart" data-product-id="{{ i.id }}" >
+													{% csrf_token %}
 													Add to cart
 												</a>
 											</div>
