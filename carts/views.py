@@ -8,7 +8,7 @@ from django.http import JsonResponse
 # Create your views here.
 def cart_add(request):
     product_id = request.POST.get("product_id")
-
+    
     product = Product.objects.get(id=product_id)
     
     if request.user.is_authenticated:
