@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load static %}
+{% load products_tags %}
+
+{% block css %}
+	
+{% endblock  %}
+
+{% block content %}	
+
+<div class="shops-outer">
+	<div class="auto-container">
+	<div class="row clearfix">
+		<!-- Filter Box -->
+		<div class="filter-box">
+			<div class="d-flex justify-content-between align-items-center flex-wrap">
+				<!-- Left Box -->
+				<div class="left-box d-flex align-items-center">
+					<div class="results">Showing {{products.start_index}}-{{products.end_index}} of {{products.paginator.count}} results</div>
+				</div>
+				<!-- Right Box -->
+				<form action="{% if request.GET.q %}{% url "products:search" %}{% else %}{% url "products:products" slug_url %}{% endif %}" method="get" >
+					<div class="right-box d-flex">
+						<div class="form-check mx-3">
+							<input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on" {% if request.GET.on_sale == 'on' %}checked{% endif %}>
+							{% if request.GET.q %}
+								<input type="hidden" name="q" value="{{ request.GET.q }}">
+							{% endif %}
+							<label class="form-check-label" for="flexCheckDefault">
+								Товары по акции
+							</label>
+						</div>
+						<div class="form-group">
+							
+							<select name="currency" class="custom-select-box" value="default">
+								<option  {% if request.GET.currency == '-publish_date' %} selected {% endif %}value="-publish_date">Новые</option>
+								<option  {% if request.GET.currency == 'price' %} selected {% endif %}value="price">Дешевые</option>
+								<option  {% if request.GET.currency == '-price' %} selected {% endif %}value="-price">Дорогие</option>
+								<option  {% if request.GET.currency == 'publish_date' %} selected {% endif %} value="publish_date">Старые</option>
+								<option >rating</option>
+							</select>
+							
+						</div>
+						
+						<ul class="pages-list">
+							<li><button type="submit" class="btn">go</button></a></li>
+						
+						</ul>
+					</div>
+				</form>
+
+			</div>
+		</div>
+		<!-- End Filter Box -->
+						{% for i in products %}
+
+						<div class="shop-item col-lg-4 col-md-4 col-sm-12">
+							<div class="inner-box">
+								<div class="image">
+									<a href="{% url "products:product_detail" i.slug %}"><img  src={% if not i.image %} {% static 'images/No picture.jpg'%} 
+										{% else %} {{i.image.url}} {% endif %}alt="" /></a>
+									<div class="options-box">
+										<ul class="option-list">
+											<li><a class="flaticon-resize" href="{% url "products:product_detail" i.slug %}"></a></li>
+											<li><a class="flaticon-heart" href="{% url "products:product_detail" i.slug %}"></a></li>
+											<li><a class="flaticon-shopping-cart-2" href="{% url "products:product_detail" i.slug %}"></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="lower-content">
+									<div class="rating">
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="light fa fa-star"></span>
+									</div>
+									<h6><a href="{% url "products:product_detail" i.slug %}">{{i.name}}</a></h6>
+									{{i.publish_date}}
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="price">
+											{% if i.discount != 0 %}
+											<span>{{i.price}}</span>
+											{% endif %}
+
+											{{i.sale_price}}</div>
+										<!-- Quantity Box -->
+										<div class="quantity-box">
+											<div class="item-quantity">
+												<input class="qty-spinner" type="text" value="1" name="quantity">
+											</div>
+											<div class="button-box">
+												<a href="{% url "carts:cart_add" %}" class="btn add-to-cart" data-product-id="{{ i.id }}" >
+													{% csrf_token %}
+													Add to cart
+												</a>
+											</div>
+										</div>
+
+										
+
+									</div>
+								</div>
+							</div>
+						</div>
+					
+					{% endfor %}
+				</div>
+			</div>
+	</div>
+	<!-- Styled Pagination -->
+	{% if products %}
+	<ul class="styled-pagination text-center">
+		<li class="next"{% if not products.previous %}disabled{% endif %}>
+			<a href="{% if products.has_previous %}?{% change_params page=products.previous_page_number %}{% else %}#{% endif %}">
+				<span class="fa fa-angle-double-left"></span></a></li>
+		{% for page in products.paginator.page_range %}
+        {% if page >= products.number|add:-2 and page <= products.number|add:2 %}   
+				
+		<li><a href="?{% change_params page=page %}" {% if products.number == page %} class="active" {% endif %}>{{page}}</a></li>
+
+		{% endif %}
+		{% endfor %}
+
+		<li class="next" {% if not products.has_next %}disabled{% endif %}>
+			<a href="{% if products.has_next %}?{% change_params page=products.next_page_number %}{% else %}#{% endif %}">
+				<span class="fa fa-angle-double-right"></span></a></li>
+	</ul>
+	{% endif %}
+	<!-- End Styled Pagination -->
+
+{% endblock%}

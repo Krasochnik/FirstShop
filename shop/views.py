@@ -1,19 +1,12 @@
-from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from shop.models import Product
 
 # Create your views here.
 def home(request):
-    products = Product.objects.all()
+    context={"title":"Home page" }
+    return render(request, "shop/home.html", context)
 
-    return render(request, 'shop/home.html', {'product': products} )
+def about(request):
+    context={"title":"about" }
+    return render(request, "shop/about.html",context)
 
-@login_required
-def profile_view(request):
-    return render(request, 'shop/profile.html')
 
-@login_required
-def user_logout(request):
-    logout(request)
-    return render(request, 'registration/logout.html', {})
