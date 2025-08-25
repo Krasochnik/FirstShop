@@ -40,11 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'users',
-    'shop',
-    'products',
-    "carts",
-    "orders",
+    'users.apps.UsersConfig',
+    'shop.apps.ShopConfig',
+    'products.apps.ProductsConfig',
+    "carts.apps.CartsConfig",
+    "orders.apps.OrdersConfig",
 
 ]
 
@@ -86,7 +86,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Shop',
-        'USER': 'PostUser',
+        'USER': 'postuser',
         'PASSWORD': 'PostUser',
         'HOST': 'localhost',
         'PORT': '5432',
